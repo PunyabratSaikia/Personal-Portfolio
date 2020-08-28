@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load staticfiles %}
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="templatemo">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<title>Punyabrat Saikia</title>
+<!--
+Stimulus Template
+http://www.templatemo.com/tm-498-stimulus
+-->
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/animate.css' %}" rel="stylesheet">
+<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/templatemo-style.css' %}" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet">
+
+<style>
+.wrapper {
+  width: 800px;
+  display: grid;
+  grid-template-columns:400px 400px;
+  grid-gap: 40px;
+}
+</style>
+
+</head>
+<body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+
+
+<!-- PRE LOADER -->
+
+<div class="preloader">
+     <div class="spinner">
+          <span class="spinner-rotate"></span>
+     </div>
+</div>
+
+
+<!-- Navigation Section -->
+
+<div class="navbar navbar-fixed-top custom-navbar" role="navigation">
+     <div class="container">
+
+          <!-- navbar header -->
+          <div class="navbar-header">
+               <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+               </button>
+          </div>
+
+          <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#home" class="smoothScroll">Home</a></li>
+                    <li><a href="#about" class="smoothScroll">About Me</a></li>
+                    <li><a href="#experience" class="smoothScroll">Experiences</a></li>
+                    <li><a href="#experience" class="smoothScroll">Projects</a></li>
+               </ul>
+          </div>
+
+     </div>
+</div>
+
+
+<!-- Home Section -->
+
+<section id="home" class="parallax-section">
+     <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+                 <div class="home-img"></div>
+            </div>
+
+               <div class="col-md-6 col-sm-6">
+                    <div class="home-thumb">
+                         <div class="section-title">
+                              <h4 class="wow fadeInUp" data-wow-delay="0.3s">welcome to my website</h4>
+                              <h1 class="wow fadeInUp" data-wow-delay="0.6s">Hello, I am <strong>Punyabrat</strong></h1>
+                              <p class="wow fadeInUp" data-wow-delay="0.9s">Currently I am an undergraduate pursuing a Bachelor of Technolgy's degree in Computer Science and Engineering from National Institute of Technology, Silchar, India.</p>
+
+                              <a href="#about" class="wow fadeInUp smoothScroll section-btn btn btn-success" data-wow-delay="1.4s">Get Started</a>
+
+                         </div>
+                    </div>
+               </div>
+
+
+          </div>
+     </div>
+</section>
+
+
+<!-- About Section -->
+
+<section id="about" class="parallax-section">
+     <div class="container">
+          <div class="row">
+
+               <div class="col-md-6 col-sm-12">
+                    <div class="about-thumb">
+                         <div class="wow fadeInUp section-title" data-wow-delay="0.4s">
+                              <h1>About Me</h1>
+                         </div>
+                         <div class="wow fadeInUp" data-wow-delay="0.8s">
+                           <h3> A Computer Science undergraduate with strong problem solving skills. Proficient in C++ and Python.</h3>
+                           <h3>Areas of Interest includes Backend Web development, Machine learning, Site optimization and competitve programming</h3>
+                         </div>
+                    </div>
+               </div>
+
+               <div class="col-md-3 col-sm-6">
+                    <img src = "{% static 'images/about-img.jpg'%}" style = "width:500px; height: 472px;">
+               </div>
+
+               <div class="bg-yellow col-md-3 col-sm-6">
+                    <div class="skill-thumb">
+                         <div class="wow fadeInUp section-title color-white" data-wow-delay="1.2s">
+                              <h1>My Skills</h1>
+                              <p class="color-white">Backend web development, machine learning, Data Structures and Algorithms</p>
+                         </div>
+
+                         <div class=" wow fadeInUp skills-thumb" data-wow-delay="1.6s">
+
+                         {%for skill in skills.all%}
+                         <strong>{{skill.name}}</strong>
+                              <span class="color-white pull-right">{{ skill.proficient }}%</span>
+                                   <div class="progress">
+                                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="{{ skill.proficient}}" aria-valuemin="0" aria-valuemax="100" style="width: {{ skill.proficient}}%;"></div>
+                                   </div>
+                        {% endfor %}
+                         </div>
+
+
+                    </div>
+               </div>
+
+          </div>
+     </div>
+</section>
+
+<section id="experience" class="parallax-section">
+     <div class="container">
+          <div class="row">
+
+               <div class="col-md-6 col-sm-6">
+                    <div class="background-image experience-img"></div>
+               </div>
+
+               <div class="col-md-6 col-sm-6">
+                    <div class="color-white experience-thumb">
+                         <div class="wow fadeInUp section-title" data-wow-delay="0.8s">
+                              <h1>My Experiences</h1>
+                              <p class="color-white">Previous companies and my tasks</p>
+                         </div>
+
+                         {% for jobs in jobs.all %}
+                         <div class="wow fadeInUp color-white media" data-wow-delay="1.2s">
+                              <div class="media-object media-left">
+                                   <i class="fa fa-laptop"></i>
+                              </div>
+                              <div class="media-body">
+                                   <h3 class="media-heading">{{jobs.Role}}</small></h3>
+                                   <medium>{{ jobs.month_s }} {{jobs.year1}} - {{ jobs.month_2 }} {{jobs.year1}}</medium>
+                                 </br>
+                                   <p class="color-white">{{jobs.summary}}</p>
+                              </div>
+                         </div>
+                         {% endfor %}
+
+                    </div>
+               </div>
+
+          </div>
+     </div>
+</section>
+
+
+<!-- Education Section -->
+
+<section id="education" class="parallax-section">
+     <div class="container">
+          <div class="row">
+
+               <div class="col-md-6 col-sm-6">
+                    <div class="color-white education-thumb">
+                         <div class="wow fadeInUp section-title" data-wow-delay="0.8s">
+                              <h1>My Education</h1>
+                         </div>
+
+                        {% for edus in edus.all %}
+                         <div class="wow fadeInUp color-white media" data-wow-delay="1.2s">
+                              <div class="media-object media-left">
+                                   <i class="fa fa-laptop"></i>
+                              </div>
+                              <div class="media-body">
+                                   <h3 class="media-heading"> {{ edus.college }}</h3>
+                                   <medium> {{ edus.year1 }} - {{ edus.year2 }} | Percentage/CGPA : {{ edus.percent}}</medium>
+                                   <p class="color-white">{{ edus.summary }}</p>
+                              </div>
+                         </div>
+                         {% endfor %}
+                    </div>
+               </div>
+
+               <div class="col-md-6 col-sm-6">
+                    <div class="background-image education-img"></div>
+               </div>
+
+          </div>
+     </div>
+</section>
+
+
+<section id="experience" class="parallax-section">
+     <div class="container">
+
+         <div class="row">
+
+               <div class="col-md-6 col-sm-6">
+                    <div class="color-white experience-thumb">
+                         <div class="wow fadeInUp section-title" data-wow-delay="0.8s">
+                              <h1>My projects</h1>
+                              <p class="color-white">Projects and tools/technologies that I worked on</p>
+                         </div>
+
+
+                         {% for project in projects.all %}
+                         <div class="wow fadeInUp color-white media" data-wow-delay="1.2s">
+                              <div class="media-object media-left">
+                                   <i class="fa fa-laptop"></i>
+                              </div>
+                              <div class="media-body">
+                                   <h3 class="media-heading">{{project.name}}</small></h3>
+                                 </br>
+                                   <p class="color-white">{{project.summary}}</p>
+                                   <p class="color-white">{{project.link}}</p>
+                              </div>
+                         </div>
+                           {% endfor %}
+
+                    </div>
+               </div>
+             </div>
+
+     </div>
+</section>
+
+<!-- Footer Section -->
+
+<footer>
+	<div class="container">
+		<div class="row">
+
+               <div class="col-md-12 col-sm-12">
+                    <div class="wow fadeInUp footer-copyright" data-wow-delay="1.8s">
+                         <p>Copyright &copy; 2020 Punyabrat Saikia</p>
+                    </div>
+				<ul class="wow fadeInUp social-icon" data-wow-delay="2s">
+                         <li><a href="#" class="fa fa-dribbble"></a></li>
+                         <li><a href ="http://www.linkedin.com/in/iampunyabrat" class="fa fa-linkedin"></a></li>
+                    </ul>
+               </div>
+
+		</div>
+	</div>
+</footer>
+
+<!-- SCRIPTS -->
+
+<script src="{% static 'js/jquery.js' %}" rel="stylesheet"></script>
+<script src="{% static 'js/bootstrap.min.js' %}" rel="stylesheet"></script>
+<script src="{% static 'js/jquery.parallax.js' %}" rel="stylesheet"></script>
+<script src="{% static 'js/smoothscroll.js' %}" rel="stylesheet"></script>
+<script src="{% static 'js/wow.min.js' %}" rel="stylesheet"></script>
+<script src="{% static 'js/custom.js' %}" rel="stylesheet"></script>
+
+</body>
+</html>
